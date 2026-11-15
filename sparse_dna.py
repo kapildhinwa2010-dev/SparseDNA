@@ -45,6 +45,8 @@ class SparseDNA(nn.Module):
         sparsity: float = 0.5
     ):
         super().__init__()
+        if not 0.0 <= sparsity <= 1.0:
+            raise ValueError(f"sparsity must be in [0, 1], got {sparsity}")
         self.num_freqs = num_freqs
         self.hidden_size = hidden_size
         self.sparsity = sparsity
@@ -138,7 +140,7 @@ class SparseDNA(nn.Module):
         W = self.generate_weights(out_dim, in_dim, device)
         
         # Apply sparsity mask
-        mask = torch.rand_like(W, device=W.device) > self.sparsity
+        mask = torch.rand_like(W) > self.sparsity
         sparse_W = W * mask
         
         return sparse_W
@@ -162,7 +164,9 @@ class SparseDNA(nn.Module):
         return weights
     
     def set_sparsity(self, sparsity: float):
-        """Set the sparsity level"""
+        """Set the sparsity level (must be in [0, 1])."""
+        if not 0.0 <= sparsity <= 1.0:
+            raise ValueError(f"sparsity must be in [0, 1], got {sparsity}")
         self.sparsity = sparsity
     
     def count_parameters(self) -> int:
