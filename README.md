@@ -1,5 +1,8 @@
 # SparseDNA
 
+[![CI](https://github.com/kapildhinwa2010-dev/SparseDNA/actions/workflows/ci.yml/badge.svg)](https://github.com/kapildhinwa2010-dev/SparseDNA/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/kapildhinwa2010-dev/SparseDNA/actions/workflows/codeql.yml/badge.svg)](https://github.com/kapildhinwa2010-dev/SparseDNA/actions/workflows/codeql.yml)
+
 Fourier-feature weight generator with a random sparsity mask (PyTorch). Research prototype.
 
 ## What it does
