@@ -35,8 +35,8 @@ class TestSparseDNAInitialization:
         """Test parameter counting"""
         sparse_dna = SparseDNA(num_freqs=32, hidden_size=64)
         count = sparse_dna.count_parameters()
-        # 32*2*64 + 64 + 64*1 + 1
-        expected = 32*2*64 + 64 + 64*1 + 1
+        # net = Linear(64->64) + Linear(64->64) + Linear(64->1), plus scale
+        expected = (64*64 + 64) + (64*64 + 64) + (64*1 + 1) + 1
         assert count == expected
 
 
